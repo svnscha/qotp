@@ -108,7 +108,7 @@ QString libqotp::totp_base64(
    // Decode the Base64 secret
    QByteArray secret = QByteArray::fromBase64(base64, options);
 
-   // Call the original hotp function with the decoded secret
+   // Call the original totp function with the decoded secret
    return libqotp::totp(QByteArrayView(secret), currentUnixTime, timeStep, epoch, digits, digitMinimum, digitMaximum, algorithm);
 }
 
