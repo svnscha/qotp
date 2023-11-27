@@ -29,3 +29,4 @@ endmacro()
 
 # Tests
 add_qotp_test(NAME test_hotp SOURCE test_hotp.cpp)
+add_qotp_test(NAME test_totp SOURCE test_totp.cpp)

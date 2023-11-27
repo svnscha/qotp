@@ -5,10 +5,12 @@ find_package(Qt6 COMPONENTS Core REQUIRED)
 
 # Header and Source Files
 set(headers
-    "include/libqotp/hotp.h"
+    "include/libqotp/qotp.h"
 )
 set(sources
     "src/hotp.cpp"
+    "src/totp.cpp"
+    "src/base32.cpp"
 )
 
 # Library Definition

@@ -1,12 +1,15 @@
 # qotp - Qt-Based OTP Library
 
-`qotp` is a Qt-based library providing HMAC-Based One-Time Password (HOTP) generation functionality as per [RFC 4226](https://datatracker.ietf.org/doc/html/rfc4226). It's designed to be easy to use in any Qt application, offering both standard HOTP and convenient wrappers for HOTP generation using Base32 and Base64 encoded secrets.
+`qotp` is a Qt-based library providing HMAC-Based One-Time Password (HOTP) generation functionality as per RFC 4226 and Time-Based One-Time Password (TOTP) generation as per RFC 6238.
+
+It's designed to be easy to use in any Qt application, offering both standard HOTP and convenient wrappers for HOTP generation using Base32 and Base64 encoded secrets.
 
 ## Features
 
 | Feature | Description |
 |---|---|
 | 🚀 HOTP Generation | Implements the HMAC-Based One-Time Password algorithm as specified in [RFC 4226](https://datatracker.ietf.org/doc/html/rfc4226). |
+| 🚀 TOTP Generation | Implements the Time-Based One-Time Password algorithm as specified in [RFC 6238](https://datatracker.ietf.org/doc/html/rfc6238). |
 | ❗ Convenience Wrappers | Provides functions for generating HOTP using Base32 or Base64 encoded secrets, making integration easier. |
 | 🤌 Qt Integration | Seamlessly integrates with Qt applications, leveraging Qt data types and functionalities for a native feel. |
 
@@ -33,7 +36,7 @@ make install
 ```
 
 ## Usage
-Using `qotp` is straightforward and intuitive. For detailed function descriptions and parameters, please refer to the documentation in `libqotp/hotp.h`.
+Using `qotp` is straightforward and intuitive. For detailed function descriptions and parameters, please refer to the documentation in `libqotp/qotp.h`.
 
 Below is an example demonstrating how to generate an HOTP value, taken from unit tests:
 

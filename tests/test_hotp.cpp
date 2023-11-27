@@ -1,6 +1,6 @@
 #include <QtTest>
 
-#include <libqotp/hotp.h>
+#include <libqotp/qotp.h>
 
 class test_hotp : public QObject
 {
