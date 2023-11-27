@@ -4,18 +4,38 @@ on: [push, pull_request]
 
 jobs:
   build:
+    name: Build ${{ matrix.config.host }}
     runs-on: ${{ matrix.config.os }}
 
+    # Hint: Very helpful resource to generate that jurplel/install-qt-action@v3 statement.
+    # https://ddalcino.github.io/aqt-list-server/
     strategy:
       fail-fast: false
       matrix:
         config:
+          # Ubuntu
           - os: ubuntu-latest
             aqtversion: '==3.1.*'
             version: '6.6.1'
             host: 'linux'
             target: 'desktop'
             arch: 'gcc_64'
+
+          # Windows
+          - os: windows-latest
+            aqtversion: '==3.1.*'
+            version: '6.6.1'
+            host: 'windows'
+            target: 'desktop'
+            arch: 'win64_msvc2019_64'
+
+          # macOS
+          - os: macos-latest
+            aqtversion: '==3.1.*'
+            version: '6.6.1'
+            host: 'mac'
+            target: 'desktop'
+            arch: 'clang_64'
 
     steps:
     - uses: actions/checkout@v2
