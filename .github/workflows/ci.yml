@@ -4,7 +4,18 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.config.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - os: ubuntu-latest
+            aqtversion: '==3.1.*'
+            version: '6.6.1'
+            host: 'linux'
+            target: 'desktop'
+            arch: 'gcc_64'
 
     steps:
     - uses: actions/checkout@v2
@@ -12,11 +23,11 @@ jobs:
     - name: Install Qt
       uses: jurplel/install-qt-action@v3
       with:
-        aqtversion: '==3.1.*'
-        version: '6.6.1'
-        host: 'linux'
-        target: 'desktop'
-        arch: 'gcc_64'
+        aqtversion: ${{ matrix.config.aqtversion }}
+        version: ${{ matrix.config.version }}
+        host: ${{ matrix.config.host }}
+        target: ${{ matrix.config.target }}
+        arch: ${{ matrix.config.arch }}
 
     - name: Configure CMake
       run: cmake -S . -B build
