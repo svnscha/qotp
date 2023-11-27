@@ -23,6 +23,22 @@ QString libqotp::totp(
     return libqotp::hotp(secret, counter, digits, digitMinimum, digitMaximum, algorithm);
 }
 
+// Refer to the detailed documentation in qotp.h for complete information about this function.
+quint64 libqotp::totp_expire_time(
+   quint64 currentUnixTime,
+   quint64 epoch,
+   unsigned int timeStep)
+{
+   // Calculate the time elapsed since the epoch
+   quint64 timeSinceEpoch = currentUnixTime - epoch;
+
+   // Calculate the start of the current time window
+   quint64 windowStart = timeSinceEpoch - (timeSinceEpoch % timeStep);
+
+   // Calculate and return the end of the current time window
+   return epoch + windowStart + timeStep;
+}
+
 // Convenience
 QString libqotp::totp_sha256(
     QByteArrayView secret,

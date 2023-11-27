@@ -106,6 +106,19 @@ namespace libqotp
       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
 
+   /**
+    * Calculates the expiration timestamp (in UTC) for the current TOTP window.
+    *
+    * @param currentUnixTime The current Unix time in seconds. Defaults to the current time if not specified.
+    * @param epoch The Unix epoch for the TOTP calculation. Usually 0 (Unix epoch).
+    * @param timeStep The time step in seconds. The RFC recommends 30 seconds.
+    * @return A quint64 representing the expiration Unix timestamp of the current TOTP window.
+    */
+   quint64 totp_expire_time(
+      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+      quint64 epoch = 0,
+      unsigned int timeStep = 30);
+
    // Convenience
    QString totp_sha256(
       QByteArrayView secret,

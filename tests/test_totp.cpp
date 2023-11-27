@@ -96,6 +96,30 @@ private slots:
       QCOMPARE(libqotp::totp_base64_sha512(key, 2000000000), QLatin1String("38618901"));
       QCOMPARE(libqotp::totp_base64_sha512(key, 20000000000), QLatin1String("47863826"));
    }
+
+   void test_totp_expire_time()
+   {
+      unsigned int timeStep = 30;
+
+      // Test case with a specific timestamp
+      quint64 currentUnixTime = 1111111109;     // Specific Unix timestamp
+      quint64 expectedExpireTime = 1111111110;  // Expected expiration time
+      QCOMPARE(libqotp::totp_expire_time(currentUnixTime, 0, timeStep), expectedExpireTime);
+
+      // Additional test cases with different timestamps
+      QCOMPARE(libqotp::totp_expire_time(1111111111, 0, timeStep), 1111111140);
+      QCOMPARE(libqotp::totp_expire_time(1234567890, 0, timeStep), 1234567890 + timeStep);
+      QCOMPARE(libqotp::totp_expire_time(2000000000, 0, timeStep), 2000000010);
+      QCOMPARE(libqotp::totp_expire_time(20000000000, 0, timeStep), 20000000010);
+
+      // Test case with a non-zero epoch
+      quint64 epoch = 100000; // Non-zero epoch
+      QCOMPARE(libqotp::totp_expire_time(1111111109, epoch, timeStep), 1111111120);
+
+      // Test case with a different time step
+      unsigned int differentTimeStep = 60; // Different time step
+      QCOMPARE(libqotp::totp_expire_time(1111111109, 0, differentTimeStep), 1111111140);
+   }
 };
 
 QTEST_MAIN(test_totp)
