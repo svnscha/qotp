@@ -74,12 +74,12 @@ namespace libqotp
     * defined by 'digitMinimum' and 'digitMaximum', the function returns an empty string.
     */
    QString hotp(
-      QByteArrayView secret,
-      uint64_t counter,
-      unsigned int digits = 6,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
+       QByteArrayView secret,
+       uint64_t counter,
+       unsigned int digits = 6,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
 
    /**
     * Generates a Time-Based One-Time Password (TOTP).
@@ -97,14 +97,14 @@ namespace libqotp
     * @return A QString containing the TOTP or an empty string in case of an error.
     */
    QString totp(
-      QByteArrayView secret,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
+       QByteArrayView secret,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
 
    /**
     * Calculates the expiration timestamp (in UTC) for the current TOTP window.
@@ -115,113 +115,113 @@ namespace libqotp
     * @return A quint64 representing the expiration Unix timestamp of the current TOTP window.
     */
    quint64 totp_expire_time(
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      quint64 epoch = 0,
-      unsigned int timeStep = 30);
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       quint64 epoch = 0,
+       unsigned int timeStep = 30);
 
    // Convenience
    QString totp_sha256(
-      QByteArrayView secret,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
+       QByteArrayView secret,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
 
    // Convenience
    QString totp_sha512(
-      QByteArrayView secret,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
+       QByteArrayView secret,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
 
    // Convenience
    QString hotp_base32(
-      const QString& base32,
-      uint64_t counter,
-      unsigned int digits = 6,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
+       const QString &base32,
+       uint64_t counter,
+       unsigned int digits = 6,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
 
    // Convenience
    QString totp_base32(
-      const QString& base32,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
+       const QString &base32,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1);
 
    // Convenience
    QString totp_base32_sha256(
-      const QString& base32,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
+       const QString &base32,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
 
    // Convenience
    QString totp_base32_sha512(
-      const QString& base32,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
+       const QString &base32,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT);
 
    // Convenience
    QString hotp_base64(
-      const QByteArray& base64,
-      uint64_t counter,
-      unsigned int digits = 6,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1,
-      QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
+       const QByteArray &base64,
+       uint64_t counter,
+       unsigned int digits = 6,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1,
+       QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
 
    // Convenience
    QString totp_base64(
-      const QByteArray& base64,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1,
-      QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
+       const QByteArray &base64,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QCryptographicHash::Algorithm algorithm = QCryptographicHash::Sha1,
+       QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
 
    // Convenience
    QString totp_base64_sha256(
-      const QByteArray& base64,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
+       const QByteArray &base64,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
 
    // Convenience
    QString totp_base64_sha512(
-      const QByteArray& base64,
-      quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
-      unsigned int timeStep = 30,
-      quint64 epoch = 0,
-      unsigned int digits = 8,
-      unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
-      unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
-      QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
+       const QByteArray &base64,
+       quint64 currentUnixTime = QDateTime::currentDateTimeUtc().toSecsSinceEpoch(),
+       unsigned int timeStep = 30,
+       quint64 epoch = 0,
+       unsigned int digits = 8,
+       unsigned int digitMinimum = QOTP_MINIMUM_DIGIT,
+       unsigned int digitMaximum = QOTP_MAXIMUM_DIGIT,
+       QByteArray::Base64Options options = QByteArray::Base64Option::Base64Encoding);
 
    /**
     * Decodes a Base32 encoded string to a QByteArray.
