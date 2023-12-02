@@ -41,7 +41,7 @@ QString libqotp::hotp(
    case QCryptographicHash::Sha1:
    {
       // Calculate HMAC-SHA1 hash
-      hash = QMessageAuthenticationCode::hash(counterBytes, secret, QCryptographicHash::Sha1);
+      hash = QMessageAuthenticationCode::hash(counterBytes, secret.toByteArray(), QCryptographicHash::Sha1);
 
       // Check for valid hash
       if (hash.isEmpty() || hash.length() < 20)
@@ -55,7 +55,7 @@ QString libqotp::hotp(
    case QCryptographicHash::Sha256:
    {
       // Calculate HMAC-SHA256 hash
-      hash = QMessageAuthenticationCode::hash(counterBytes, secret, QCryptographicHash::Sha256);
+      hash = QMessageAuthenticationCode::hash(counterBytes, secret.toByteArray(), QCryptographicHash::Sha256);
 
       // Check for valid hash
       if (hash.isEmpty() || hash.length() < 32)
@@ -69,7 +69,7 @@ QString libqotp::hotp(
    case QCryptographicHash::Sha512:
    {
       // Calculate HMAC-SHA512 hash
-      hash = QMessageAuthenticationCode::hash(counterBytes, secret, QCryptographicHash::Sha512);
+      hash = QMessageAuthenticationCode::hash(counterBytes, secret.toByteArray(), QCryptographicHash::Sha512);
 
       // Check for valid hash
       if (hash.isEmpty() || hash.length() < 64)
